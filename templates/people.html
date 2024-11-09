@@ -55,8 +55,77 @@
         <button class="search-button">Search</button>
     </div>
     <div class="box-list">
-    <h1>People:</h1>
 
+    <div class="box-list-head">
+        <h1>People:</h1>
+        <!-- Post Event Button -->
+        <button class="post-button" onclick="openModal()">Post Request</button>
+    </div>
+    <!-- Modal for Event Form -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div class="modal-header">Post New Request</div>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="requestName">Request Name:</label>
+                    <input type="text" id="eventName" name="eventName" required>
+                </div>
+                <div class="form-group">
+                    <label for="personName">Name:</label>
+                    <input type="text" id="personName" name="personName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventType">Request Type:</label>
+                    <select id="eventType" name="eventType" required>
+                        <option value="">Select Event Type</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="ride">Ride</option>
+                        <option value="notes">Notes</option>
+                        <option value="option1">option1</option>
+                        <option value="option2">option2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="eventImage">Your profile:</label>
+                    <input type="file" id="eventImage" name="eventImage" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="eventDate">Event Date:</label>
+                    <input type="date" id="eventDate" name="eventDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="requestTime">Request Time:</label>
+                    <input type="time" id="eventTime" name="eventTime" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cost">Cost:</label>
+                    <input type="text" id="cost" value="$" name="cost" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="requestPay">Pay:</label>
+                    <input type="text" id="requestPay" value="$" name="requestPay" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
     <!-- Box 1 -->
     <div class="box">
         <div class="box-image-section">
@@ -101,6 +170,26 @@
         <!-- Additional boxes can be added similarly -->
     </div>
 </div>
+
+<script>
+    // Open modal
+    function openModal() {
+        document.getElementById("eventModal").style.display = "flex";
+    }
+
+    // Close modal
+    function closeModal() {
+        document.getElementById("eventModal").style.display = "none";
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById("eventModal");
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
     
 </body>
 </html>
