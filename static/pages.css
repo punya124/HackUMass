@@ -37,7 +37,6 @@
 }
 
 .main {
-    
     flex-grow: 1; 
     position: relative;
     max-width: 800px; /* Controls the maximum width of the main content */
