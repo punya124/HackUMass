@@ -27,6 +27,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
+    print(auth.current_user)
     return render_template('index.html', user=auth.current_user)
 
 @app.route("/account")
@@ -79,6 +80,7 @@ def events():
 @app.route("/signUp", methods=['GET', 'POST'])
 def signUp():
     if request.method == 'POST':
+        name = request.form['name']
         email = request.form['email']
         cnfpassword = request.form['cnfpassword']
         password = request.form['password']
@@ -88,6 +90,11 @@ def signUp():
                 print('Signed up!')
                 auth.sign_in_with_email_and_password(email=email, password=password)
                 print('Signed in!')
+                db.collection('Users').document(auth.current_user.get('localId')).set({
+                    'email': email,
+                    'name': name,
+                    'photoURL': '',
+                })
                 return redirect('/', code=302)
             except:
                 print('Email Already exists!')
@@ -98,9 +105,10 @@ def signUp():
 @app.route("/people", methods=['GET', 'POST'])
 def people():
     if request.method == 'POST':
+        currentUser = db.collection('Users').document(auth.current_user.get('localId')).get().to_dict()
         # Retrieve form values
         request_name = request.form.get('eventName')
-        person_name = request.form.get('personName')
+        person_name = currentUser.get('name')
         request_type = request.form.get('eventType')
         event_date = request.form.get('eventDate')
         event_time = request.form.get('eventTime')
@@ -140,7 +148,7 @@ def people():
     request_list = db.collection('Requests').order_by('Date', direction=firestore.Query.ASCENDING).get()
     requests = [request.to_dict() for request in request_list]
 
-    return render_template('people.html', requests=requests)
+    return render_template('people.html', requests=requests, user=auth.current_user)
 
 if __name__ == '__main__':
    app.run(debug=True)
