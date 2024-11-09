@@ -32,20 +32,25 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .search-button:hover {
-    background-color:rgb(161, 70, 65);;
+    background-color: rgb(161, 70, 65);
+    ;
 }
 
 .main {
-    flex-grow: 1; 
+    flex-grow: 1;
     position: relative;
-    max-width: 800px; /* Controls the maximum width of the main content */
+    max-width: 800px;
+    /* Controls the maximum width of the main content */
     width: 100%;
-    margin: auto; /* Centers the container */
+    margin: auto;
+    /* Centers the container */
     left: -5%;
 
-    
+
 }
+
 .post-button {
     padding: 10px;
     margin: 10px 0px;
@@ -57,6 +62,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .post-button:hover {
     background-color: rgb(161, 70, 65);
 
@@ -65,7 +71,8 @@
 
 /* Modal styles */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: fixed;
     top: 0;
     left: 0;
@@ -76,21 +83,26 @@
     align-items: center;
     z-index: 1000;
 }
+
 .modal-content {
     background-color: white;
     padding: 50px;
     width: 400px;
-    max-height: 80vh; /* Limit the modal height */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 80vh;
+    /* Limit the modal height */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
 }
+
 .modal-header {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
 }
+
 .close-button {
     position: absolute;
     top: 10px;
@@ -99,21 +111,26 @@
     color: #333;
     cursor: pointer;
 }
+
 .form-group {
     margin-bottom: 15px;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-size: 0.9em;
 }
-.form-group input, .form-group textarea {
+
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
 }
+
 .submit-button {
     padding: 10px 20px;
     font-size: 1em;
@@ -123,6 +140,7 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
 .submit-button:hover {
     background-color: #45a049;
 }
@@ -139,6 +157,7 @@ body {
     padding: 20px;
     background-color: #f4f4f4;
 }
+
 .box-list {
     display: flex;
     flex-direction: column;
@@ -146,6 +165,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
 }
+
 .box {
     display: flex;
     align-items: flex-start;
@@ -153,8 +173,9 @@ body {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
+
 }
+
 .box img {
     width: 100px;
     height: 100px;
@@ -168,8 +189,9 @@ body {
     flex-direction: column;
     align-items: center;
     margin-right: 15px;
-    
+
 }
+
 .box-image-section .name-tag {
     font-size: 0.8em;
     color: #666;
@@ -181,9 +203,10 @@ body {
 .box-content {
     flex-grow: 1;
 }
+
 .box-title {
     font-size: 1.2em;
-    color:rgb(125, 38, 34);
+    color: rgb(125, 38, 34);
     font-weight: bold;
     margin: 0;
 }
@@ -191,7 +214,8 @@ body {
 .box-image-section img {
     width: 100px;
     height: 100px;
-    border-radius: 50%; /* Makes the image circular */
+    border-radius: 50%;
+    /* Makes the image circular */
     object-fit: cover;
     margin-bottom: 5px;
     overflow: hidden;
@@ -203,6 +227,7 @@ body {
     color: #666;
     margin: 5px 0 0;
 }
+
 .box-items {
     margin-left: auto;
     padding-left: 20px;
@@ -210,16 +235,19 @@ body {
     flex-direction: column;
     align-items: flex-end;
 }
+
 .box-items ul {
     list-style-type: disc;
     padding-left: 20px;
     margin: 0;
 }
+
 .box-items ul li {
     font-size: 0.8em;
     color: #333;
     margin-bottom: 5px;
 }
+
 .accept-button {
     margin-top: 10px;
     padding: 5px 10px;
@@ -231,6 +259,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .accept-button:hover {
     background-color: #3d3e3e;
 
@@ -243,129 +272,38 @@ body {
     gap: 20px;
     margin-top: 20px;
 }
+
 .filter-section {
     width: 200px;
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-right:0;
+    margin-right: 0;
     margin-top: 1%;
 }
+
 .filter-header {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
 }
+
 .filter-options {
     display: flex;
     flex-direction: column;
 }
+
 .filter-options label {
     font-size: 0.9em;
     margin-bottom: 8px;
     cursor: pointer;
 }
 
-.box-list-head{
+.box-list-head {
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-/* Your existing styles above remain unchanged */
-/* Mobile-specific styles */
-@media (max-width: 768px) {
-    /* Search bar adjustments */
-    .search-bar {
-        flex-direction: column;
-        gap: 10px;
-        margin: 20px auto;
-    }
-
-    .search-input, .search-button {
-        width: 100%;
-        border-radius: 4px;
-    }
-
-    .box-list {
-        padding: 0;
-    }
-
-    .box {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .box img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 10px;
-    }
-
-    .box-items {
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    /* Modal adjustments */
-    .modal-content {
-        width: 90%;
-        max-width: 400px;
-        padding: 20px;
-    }
-
-    /* Filter Section adjustments for mobile */
-    .filter-toggle {
-        display: block;
-        background-color: rgb(125, 38, 34);
-        color: white;
-        border: none;
-        padding: 10px;
-        font-size: 1em;
-        text-align: left;
-        width: 100%;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-bottom: 10px;
-    }
-
-    .filter-toggle:hover {
-        background-color: rgb(161, 70, 65);
-    }
-
-    .filter-section {
-        display: none; /* Hidden by default on mobile */
-        background-color: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-top: 10px;
-    }
-
-    .filter-section.active {
-        display: block; /* Show filters when active */
-    }
-
-    /* Ensure the filter is full-width under the search bar */
-    .filter-section,
-    .filter-toggle {
-        width: 100%;
-    }
-}
-
-/* Desktop view (default) */
-@media (min-width: 769px) {
-    .filter-toggle {
-        display: none; /* Hide the filter button on desktop */
-    }
-
-    .filter-section {
-        display: block; /* Show filters normally on desktop */
-        width: 200px;
-        margin-top: 0;
-    }
 }

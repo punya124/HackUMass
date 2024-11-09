@@ -9,7 +9,7 @@ API_KEY = 'HlrEa2UcmnNgX6vYkKzU65JDfRnBVWmXbRdxtxuqwI9ih8TbEXPFPSWV'
 SEARCH_TERM = 'party'
 SEARCH_TERM2 = 'statue'
 URL = f'https://api.pexels.com/v1/search?query={SEARCH_TERM}&per_page=80'
-URL2 = f'https://api.pexels.com/v1/search?query={SEARCH_TERM2}&per_page=80'
+URL2 = f'https://api.pexels.com/v1/search?query={SEARCH_TERM2}&per_page=80&orientation=square'
 
 headers = {
     'Authorization': API_KEY

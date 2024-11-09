@@ -15,10 +15,6 @@
 <body>
     <div id="topbar">
         <div id="logo"><a href="/">USocial</a></div>
-        <!-- Hamburger Menu Button for Mobile -->
-        <button class="hamburger" onclick="toggleMenu()">
-            &#9776;
-        </button>
         <div id="nav-links">
             <a href="/events">Events</a>
             <a href="/people">People</a>
@@ -32,38 +28,32 @@
     </div>
 
 
-
     <div class="container">
-        <!-- Collapsible Filter Section for Mobile -->
-    <button class="filter-toggle" onclick="toggleFilters()">Filters &#9660;</button>
-    
-    <!-- Sidebar Filter Section (Visible on Desktop) -->
-    <div class="filter-section" id="filterSection">
-        <div class="filter-header">Filter</div>
-        <div class="filter-options">
-            <label><input type="checkbox"> Option 1</label>
-            <label><input type="checkbox"> Option 2</label>
-            <label><input type="checkbox"> Option 3</label>
-            <label><input type="checkbox"> Option 4</label>
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-header">Filter</div>
+            <div class="filter-options">
+                <label>
+                    <input type="checkbox"> Option 1
+                </label>
+                <label>
+                    <input type="checkbox"> Option 2
+                </label>
+                <label>
+                    <input type="checkbox"> Option 3
+                </label>
+                <label>
+                    <input type="checkbox"> Option 4
+                </label>
+            </div>
         </div>
-    </div>
+
 
         <div class="main">
             <div class="search-bar">
                 <input type="text" class="search-input" placeholder="Search...">
                 <button class="search-button">Search</button>
             </div>
-            <div class="filter-section" id="filterSection">
-                <div class="filter-header">Filter</div>
-                <div class="filter-options">
-                    <label><input type="checkbox"> Option 1</label>
-                    <label><input type="checkbox"> Option 2</label>
-                    <label><input type="checkbox"> Option 3</label>
-                    <label><input type="checkbox"> Option 4</label>
-                </div>
-            </div>
-
-
             <div class="box-list">
                 <div class="box-list-head">
                     <h1>Events:</h1>
@@ -159,20 +149,7 @@
                     closeModal();
                 }
             }
-
-            // Toggle the navigation menu on mobile
-            function toggleMenu() {
-                const navLinks = document.getElementById("nav-links");
-                navLinks.classList.toggle("active");
-            }
-
-            // Toggle the filters section on mobile
-            function toggleFilters() {
-                const filterSection = document.getElementById("filterSection");
-                filterSection.classList.toggle("active");
-            }
         </script>
-
 
 </body>
 
