@@ -53,7 +53,11 @@
                 <input type="text" class="search-input" placeholder="Search...">
                 <button class="search-button">Search</button>
             </div>
-            <div class="filter-section" id="filterSection">
+            <!-- Collapsible Filter Button for Mobile -->
+            <button class="filter-toggle" onclick="toggleFilters()">Filters &#9660;</button>
+
+            <!-- Collapsible Filter Section for Mobile (same ID as sidebar) -->
+            <div class="filter-section filter-mobile" id="mobileFilterSection">
                 <div class="filter-header">Filter</div>
                 <div class="filter-options">
                     <label><input type="checkbox"> Option 1</label>
