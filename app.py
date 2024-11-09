@@ -67,7 +67,7 @@ def events():
             'Description': event_description
         })
 
-    eventList = db.collection('Events').get()
+    eventList = db.collection('Events').order_by('Date', direction=firestore.Query.ASCENDING).get()
     events = [event.to_dict() for event in eventList]
 
     return render_template('events.html', user=auth.current_user, events = events)
