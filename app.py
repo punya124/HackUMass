@@ -55,6 +55,8 @@ def signUp():
             try:
                 auth.create_user_with_email_and_password(email=email, password=password)
                 print('Signed up!')
+                auth.sign_in_with_email_and_password(email=email, password=password)
+                print('Signed in!')
                 return redirect('/', code=302)
             except:
                 print('Email Already exists!')
