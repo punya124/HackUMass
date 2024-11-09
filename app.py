@@ -17,5 +17,9 @@ def events():
 def signUp():
     return render_template('signUp.html')
 
+@app.route("/people")
+def people():
+    return render_template('people.html')
+
 if __name__ == '__main__':
    app.run(debug=True)

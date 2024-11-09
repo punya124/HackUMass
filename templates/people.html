@@ -3,9 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>People</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pages.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="topbar">
+        <div id="logo" href="index.html">USocial</div>
+        <div id="nav-links">
+            <a href="/events">Events</a>
+            <a href="/people">People</a>
+            <a href="#connect">Connect</a>
+            <button onclick="window.location = '/login'" id="signup-button">Login</button>
+        </div>
+    </div>
+
+    
+    
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-header">Filter</div>
+            <div class="filter-options">
+                <label>
+                    <input type="checkbox"> Option 1
+                </label>
+                <label>
+                    <input type="checkbox"> Option 2
+                </label>
+                <label>
+                    <input type="checkbox"> Option 3
+                </label>
+                <label>
+                    <input type="checkbox"> Option 4
+                </label>
+            </div>
+        </div>
+    
+    
+    <div class="main">
+    <div class="search-bar" > 
+        <input type="text" class="search-input" placeholder="Search...">
+        <button class="search-button">Search</button>
+    </div>
+    <div class="box-list">
+    <h1>People:</h1>
+
+    <!-- Box 1 -->
+    <div class="box">
+        <div class="box-image-section">
+            <img src="https://via.placeholder.com/100" alt="Sample Image">
+            <div class="name-tag">Alex Chan</div>
+        </div>        
+        
+        <div class="box-content">
+            <h3 class="box-title">Request Task</h3>
+            <p class="box-description">This is a description of the box content. It provides more details about the item in the box.</p>
+        </div>
+        <div class="box-items">
+            <ul>
+                <li>Time:</li>
+                <li>Location:</li>
+                <li>Cost</li>
+            </ul>
+            <button class="accept-button">Accept</button>
+        </div>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="box">
+        <div class="box-image-section">
+            <img src="https://via.placeholder.com/100" alt="Sample Image">
+            <div class="name-tag">Punya Guyandi</div>
+        </div> 
+        <div class="box-content">
+            <h3 class="box-title">Box Title 2</h3>
+            <p class="box-description">This is another description of a different box content. It provides additional information.</p>
+        </div>
+        <div class="box-items">
+            <ul>
+                <li>Time:</li>
+                <li>Location:</li>
+                <li>Cost</li>
+            </ul>
+            <button class="accept-button">Accept</button>
+        </div>
+    </div>
+    
+        <!-- Additional boxes can be added similarly -->
+    </div>
+</div>
     
 </body>
 </html>
