@@ -1,11 +1,21 @@
+import random
 from flask import Flask, flash, redirect, render_template, request
 import pyrebase
 import firebase_admin
 from firebase_admin import credentials, firestore
+import requests
+
+API_KEY = 'HlrEa2UcmnNgX6vYkKzU65JDfRnBVWmXbRdxtxuqwI9ih8TbEXPFPSWV'
+SEARCH_TERM = 'party'
+URL = f'https://api.pexels.com/v1/search?query={SEARCH_TERM}&per_page=80'
+
+headers = {
+    'Authorization': API_KEY
+}
+
 
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
-
 
 firebaseConfig = {
     'apiKey': "AIzaSyAqympu8EbHfPZgydl5oOmBKZdKL53TlPc",
@@ -21,7 +31,7 @@ firebaseConfig = {
 firebase_p = pyrebase.initialize_app(firebaseConfig)
 db = firestore.client()
 auth = firebase_p.auth()
-# storage = firebase.storage()
+storage = firebase_p.storage()
 
 app = Flask(__name__)
 
@@ -62,11 +72,23 @@ def events():
         event_location = request.form.get('eventLocation')
         event_cost = request.form.get('eventCost')
         event_description = request.form.get('eventDescription')
+
+        response = requests.get(URL, headers=headers)
+
+        if response.status_code == 200:
+            data = response.json()
+            # Extracting image URLs
+            image_urls = [photo['src']['original'] for photo in data['photos']]
+            
+            imgUrl = random.choice(image_urls)
+        else:
+            print("Error:", response.status_code)
         
         db.collection('Events').add({
             'Name': event_name,
             'Type': event_type,
             'Date': event_date,
+            'ImageURL': imgUrl,
             'Location': event_location,
             'Cost': event_cost,
             'Description': event_description
