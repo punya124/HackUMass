@@ -307,3 +307,98 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+/* Default Desktop Layout */
+.container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Sidebar Filter for Desktop (Only visible on large screens) */
+.filter-section {
+    width: 200px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide filter sidebar on mobile */
+@media (max-width: 768px) {
+
+    /* Hide the default filter section on mobile */
+    .filter-section {
+        display: none;
+        /* Hide the sidebar filter section for mobile */
+    }
+
+    .container {
+        flex-direction: column;
+        /* Stack content vertically on mobile */
+    }
+
+    /* Show the Filter Button for Mobile */
+    .filter-toggle {
+        display: block;
+        background-color: rgb(125, 38, 34);
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 1em;
+        text-align: left;
+        width: 100%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 10px 0;
+    }
+
+    /* Mobile Filter Section (Collapsible) */
+    .filter-mobile {
+        display: none;
+        /* Hidden by default on mobile */
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+
+    .filter-mobile.active {
+        display: block;
+        /* Show when active */
+    }
+
+    /* Search bar adjustments for mobile */
+    .search-bar {
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px auto;
+    }
+
+    .search-input,
+    .search-button {
+        width: 100%;
+    }
+
+    .box-list {
+        padding: 0;
+    }
+
+    .box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .box img {
+        width: 80%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .box-items {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
