@@ -3,8 +3,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    width:100%;
-    overflow-x:hidden;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 * {
@@ -76,15 +76,24 @@ a {
     font-size: 1rem;
     color: #333;
     z-index: 2;
-    font-style: normal;
-    font-family: FontAwesome;
-    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+#accnt-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Makes sure the image covers the area without distorting */
+    border-radius: 50%;
+    /* Ensures the image is also circular */
 }
 
 #accnt-button:hover {
     background-color: rgb(161, 70, 65);
 }
-
 
 /* Your existing styles above remain unchanged */
 

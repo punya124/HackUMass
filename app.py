@@ -39,12 +39,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    print(auth.current_user)
-    return render_template('index.html', user=auth.current_user, user_icon=getUserPhoto)
+    return render_template('index.html', user=auth.current_user, user_icon=getUserPhoto())
 
 @app.route("/account")
 def account():
-    return render_template('accounts.html', user=auth.current_user, user_icon=getUserPhoto)
+    return render_template('accounts.html', user=auth.current_user, user_icon=getUserPhoto())
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -99,7 +98,7 @@ def events():
     eventList = db.collection('Events').order_by('Date', direction=firestore.Query.ASCENDING).get()
     events = [event.to_dict() for event in eventList]
 
-    return render_template('events.html', user=auth.current_user, events = events, user_icon=getUserPhoto)
+    return render_template('events.html', user=auth.current_user, events = events, user_icon=getUserPhoto())
 
 @app.route("/signUp", methods=['GET', 'POST'])
 def signUp():
@@ -184,10 +183,13 @@ def people():
     request_list = db.collection('Requests').order_by('Date', direction=firestore.Query.ASCENDING).get()
     requests = [request.to_dict() for request in request_list]
 
-    return render_template('people.html', requests=requests, user=auth.current_user, user_icon=getUserPhoto)
+    return render_template('people.html', requests=requests, user=auth.current_user, user_icon=getUserPhoto())
 
 def getUserPhoto():
-    return db.collection('Users').document(auth.current_user.get('localId')).get().to_dict().get('photoURL')
+    if(auth.current_user):
+        return db.collection('Users').document(auth.current_user.get('localId')).get().to_dict().get('photoURL')
+    else:
+        return ''
 
 if __name__ == '__main__':
    app.run(debug=True)
