@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='pages.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
 
@@ -21,10 +22,37 @@
         </div>
     </div>
 
+    
+    
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-header">Filter</div>
+            <div class="filter-options">
+                <label>
+                    <input type="checkbox"> Option 1
+                </label>
+                <label>
+                    <input type="checkbox"> Option 2
+                </label>
+                <label>
+                    <input type="checkbox"> Option 3
+                </label>
+                <label>
+                    <input type="checkbox"> Option 4
+                </label>
+            </div>
+        </div>
+    
+    
+    <div class="main">
+    <div class="search-bar" > 
+        <input type="text" class="search-input" placeholder="Search...">
+        <button class="search-button">Search</button>
+    </div>
     <div class="box-list">
-        <h1>Events:</h1>
+    <h1>Events:</h1>
 
-       <!-- Box 1 -->
     <!-- Box 1 -->
     <div class="box">
         <img src="https://via.placeholder.com/100" alt="Sample Image">
@@ -61,7 +89,8 @@
     
         <!-- Additional boxes can be added similarly -->
     </div>
-
+</div>
+    
 </body>
 
 </html>
