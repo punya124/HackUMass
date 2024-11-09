@@ -92,12 +92,14 @@ body {
     font-weight: bold;
     margin: 0;
 }
-.box img {
+
+.box-image-section img {
     width: 100px;
     height: 100px;
     border-radius: 50%; /* Makes the image circular */
     object-fit: cover;
     margin-bottom: 5px;
+    overflow: hidden;
 }
 
 
