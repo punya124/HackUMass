@@ -37,10 +37,14 @@
 }
 
 .main {
-    margin-top: 0;
-    margin-left: 10%;
-    position: relative; /* Necessary for absolute positioning of Post Event button */
+    
     flex-grow: 1; 
+    position: relative;
+    max-width: 800px; /* Controls the maximum width of the main content */
+    width: 100%;
+    margin: auto; /* Centers the container */
+    left: -5%;
+
     
 }
 .post-button {
