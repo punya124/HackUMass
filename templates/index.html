@@ -4,11 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
+    <div id="topbar">
+        <div id="logo" href="index.html">USocial</div>
+        <div id="nav-links">
+            <a href="/events">Events</a>
+            <a href="people.html">People</a>
+            <a href="#connect">Connect</a>
+            <button onclick="window.location = '/login'" id="signup-button">Login</button>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-content">
+            <div class="text-content">
+                <h1>Lorem <span class="highlight">Ipsum</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button>Search</button>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg"
+                    alt="Group of People Gathering in Concert">
+            </div>
+        </div>
+    </div>
+    <section class="trending-events">
+        <h2>Trending <span class="highlight">Events</span></h2>
+        <div class="slider-container">
+            <button class="slider-btn left-btn" onclick="slideLeft()">&#10094;</button>
+            <div class="slider">
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Event Image 1">
+                    <div class="card-title">Lorem Ipsum Event 1</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Event Image 2">
+                    <div class="card-title">Lorem Ipsum Event 2</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Event Image 3">
+                    <div class="card-title">Lorem Ipsum Event 3</div>
+                </div>
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Event Image 1">
+                    <div class="card-title">Lorem Ipsum Event 1</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Event Image 2">
+                    <div class="card-title">Lorem Ipsum Event 2</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Event Image 3">
+                    <div class="card-title">Lorem Ipsum Event 3</div>
+                </div>
+            </div>
+            <button class="slider-btn right-btn" onclick="slideRight()">&#10095;</button>
+        </div>
+    </section>
+    <section class="featured-rqsts">
+        <h2>Featured <span class="highlight">Requests</span></h2>
+        <div class="rqstcard-grid">
+            <div class="rqstcard">
+                <div class="rqstcard-content">
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
+                        <p class="name">John Doe</p> <!-- Added name below the image -->
+                    </div>
+                    <div class="text">
+                        <p class="role">Study Partner</p>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
+                            odio
+                            vitae vestibulum.</p>
+                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                        <p class="details">Location: Library, Room 101</p>
+                    </div>
+                </div>
+                <button class="accept-btn">Accept</button>
+            </div>
+            <div class="rqstcard">
+                <div class="rqstcard-content">
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
+                        <p class="name">John Doe</p> <!-- Added name below the image -->
+                    </div>
+                    <div class="text">
+                        <p class="role">Study Partner</p>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
+                            odio
+                            vitae vestibulum.</p>
+                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                        <p class="details">Location: Library, Room 101</p>
+                    </div>
+                </div>
+                <button class="accept-btn">Accept</button>
+            </div>
+            <div class="rqstcard">
+                <div class="rqstcard-content">
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
+                        <p class="name">John Doe</p> <!-- Added name below the image -->
+                    </div>
+                    <div class="text">
+                        <p class="role">Study Partner</p>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
+                            odio
+                            vitae vestibulum.</p>
+                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                        <p class="details">Location: Library, Room 101</p>
+                    </div>
+                </div>
+                <button class="accept-btn">Accept</button>
+            </div>
+            <div class="rqstcard">
+                <div class="rqstcard-content">
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
+                        <p class="name">John Doe</p> <!-- Added name below the image -->
+                    </div>
+                    <div class="text">
+                        <p class="role">Study Partner</p>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
+                            odio
+                            vitae vestibulum.</p>
+                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                        <p class="details">Location: Library, Room 101</p>
+                    </div>
+                </div>
+                <button class="accept-btn">Accept</button>
+            </div>
+            <!-- Repeat the above structure for other cards -->
+        </div>
 
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 
 </html>

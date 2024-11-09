@@ -15,6 +15,7 @@ body {
 #topbar {
     display: flex;
     width: 95vw;
+    height: 5vh;
     align-items: center;
     background-color: #000;
     padding: 10px 2.5vw;

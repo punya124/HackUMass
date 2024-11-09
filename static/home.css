@@ -1,0 +1,324 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.header {
+    width: calc(100%-4rem);
+    height: 85vh;
+    padding: 2rem;
+    background: linear-gradient(to right, #000000, #444444);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.text-content {
+    max-width: 50%;
+}
+
+.text-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #cccccc;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    background-color: rgb(125, 38, 34);
+    color: white;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: rgb(161, 70, 65);
+}
+
+.image-container {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
+    border-radius: 60% 40% 50% 45% / 40% 50% 55% 45%;
+    object-fit: cover;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.highlight {
+    font-weight: bold;
+    color: rgb(125, 38, 34);
+}
+
+/* Trending Events Section */
+.trending-events {
+    margin: 10vh 0;
+    padding: 2rem;
+    text-align: left;
+}
+
+.trending-events h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    height: 45vh;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    /* Ensures slider is above other content */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.4s ease;
+    gap: 15px;
+    z-index: 1;
+    /* Ensures cards are above background */
+}
+
+/* Card Styling */
+.card {
+    min-width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 1;
+    /* Ensures each card stays above background */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Slider Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 2;
+    /* Ensures buttons are above cards */
+}
+
+.slider-btn:hover {
+    background-color: #ddd;
+}
+
+.left-btn {
+    left: 0;
+}
+
+.right-btn {
+    right: 0;
+}
+
+.featured-rqsts {
+    position: relative;
+    padding: 10vh 2rem;
+    text-align: left;
+    background: url('https://images.pexels.com/photos/7304689/pexels-photo-7304689.jpeg');
+    background-size: cover;
+    /* Ensures the image covers the entire element */
+    background-position: center;
+}
+
+.featured-rqsts::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* White with 50% opacity */
+    z-index: 1;
+    /* Ensure the overlay is on top of the image */
+}
+
+.featured-rqsts h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Style for the grid container */
+.rqstcard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 cards per row */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* rqstcard container styles */
+.rqstcard {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+/* rqstcard content */
+.rqstcard-content {
+    display: flex;
+    padding: 15px;
+}
+
+/* Profile picture styles */
+.profile {
+
+    margin-right: 15px;
+    overflow: hidden;
+    /* Ensure image doesn't overflow the container */
+
+    /* Circular shape */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center the profile image and name horizontally */
+    justify-content: center;
+    /* Center them vertically */
+}
+
+.profile-img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+/* Name styling */
+.name {
+    font-size: 14px;
+    /* Adjust the font size for the name */
+    font-weight: bold;
+    /* Make the name bold */
+    color: #333;
+    /* Dark color for visibility */
+    margin-top: 5px;
+    /* Adds some space between the image and the name */
+}
+
+/* Text content styles */
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.role {
+    font-weight: 800;
+    font-size: 16px;
+    margin: 0;
+    color: rgb(125, 38, 34);
+}
+
+.description {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.details {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Button styles */
+.accept-btn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    text-align: center;
+}
+
+.accept-btn:hover {
+    background-color: rgb(49, 44, 44);
+}
