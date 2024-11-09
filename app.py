@@ -1,5 +1,11 @@
 from flask import Flask, flash, redirect, render_template, request
 import pyrebase
+import firebase_admin
+from firebase_admin import credentials, firestore
+
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
+
 
 firebaseConfig = {
     'apiKey': "AIzaSyAqympu8EbHfPZgydl5oOmBKZdKL53TlPc",
@@ -9,12 +15,12 @@ firebaseConfig = {
   'messagingSenderId': "1012188298507",
   'appId': "1:1012188298507:web:7741d6d389c828b042760e",
   'measurementId': "G-EB4MP6TKEK",
-  'databaseURL': ""
+  'databaseURL': 'https://xxxxx.firebaseio.com'
 }
 
-firebase = pyrebase.initialize_app(firebaseConfig)
-# db = firebase.database()
-auth = firebase.auth()
+firebase_p = pyrebase.initialize_app(firebaseConfig)
+db = firestore.client()
+auth = firebase_p.auth()
 # storage = firebase.storage()
 
 app = Flask(__name__)
@@ -41,8 +47,26 @@ def logout():
     auth.current_user = None
     return redirect('/', code=302)
 
-@app.route("/events")
+@app.route("/events", methods =['GET', 'POST'])
 def events():
+    if request.method == 'POST':
+        # Retrieve form values using request.form
+        event_name = request.form.get('eventName')
+        event_type = request.form.get('eventType')
+        event_date = request.form.get('eventDate')
+        event_location = request.form.get('eventLocation')
+        event_cost = request.form.get('eventCost')
+        event_description = request.form.get('eventDescription')
+        
+        db.collection('Events').add({
+            'Name': event_name,
+            'Type': event_type,
+            'Date': event_date,
+            'Location': event_location,
+            'Cost': event_cost,
+            'Description': event_description
+        })
+
     return render_template('events.html', user=auth.current_user)
 
 @app.route("/signUp", methods=['GET', 'POST'])
