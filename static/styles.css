@@ -3,6 +3,16 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
+
+* {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
 #topbar {
     display: flex;
     justify-content: space-between;
@@ -16,6 +26,7 @@ body {
     font-weight: bold;
 }
 #nav-links {
+    margin-left: auto;
     display: flex;
     gap: 15px;
 }
