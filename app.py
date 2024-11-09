@@ -7,7 +7,9 @@ import requests
 
 API_KEY = 'HlrEa2UcmnNgX6vYkKzU65JDfRnBVWmXbRdxtxuqwI9ih8TbEXPFPSWV'
 SEARCH_TERM = 'party'
+SEARCH_TERM2 = 'statue'
 URL = f'https://api.pexels.com/v1/search?query={SEARCH_TERM}&per_page=80'
+URL2 = f'https://api.pexels.com/v1/search?query={SEARCH_TERM2}&per_page=80'
 
 headers = {
     'Authorization': API_KEY
@@ -38,11 +40,11 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     print(auth.current_user)
-    return render_template('index.html', user=auth.current_user)
+    return render_template('index.html', user=auth.current_user, user_icon=getUserPhoto)
 
 @app.route("/account")
 def account():
-    return render_template('accounts.html', user=auth.current_user)
+    return render_template('accounts.html', user=auth.current_user, user_icon=getUserPhoto)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -97,7 +99,7 @@ def events():
     eventList = db.collection('Events').order_by('Date', direction=firestore.Query.ASCENDING).get()
     events = [event.to_dict() for event in eventList]
 
-    return render_template('events.html', user=auth.current_user, events = events)
+    return render_template('events.html', user=auth.current_user, events = events, user_icon=getUserPhoto)
 
 @app.route("/signUp", methods=['GET', 'POST'])
 def signUp():
@@ -106,6 +108,18 @@ def signUp():
         email = request.form['email']
         cnfpassword = request.form['cnfpassword']
         password = request.form['password']
+
+        response = requests.get(URL2, headers=headers)
+
+        if response.status_code == 200:
+            data = response.json()
+            # Extracting image URLs
+            image_urls = [photo['src']['original'] for photo in data['photos']]
+            
+            imgUrl = random.choice(image_urls)
+        else:
+            print("Error:", response.status_code)
+
         if cnfpassword == password:
             try:
                 auth.create_user_with_email_and_password(email=email, password=password)
@@ -115,7 +129,7 @@ def signUp():
                 db.collection('Users').document(auth.current_user.get('localId')).set({
                     'email': email,
                     'name': name,
-                    'photoURL': '',
+                    'photoURL': imgUrl,
                 })
                 return redirect('/', code=302)
             except:
@@ -170,7 +184,10 @@ def people():
     request_list = db.collection('Requests').order_by('Date', direction=firestore.Query.ASCENDING).get()
     requests = [request.to_dict() for request in request_list]
 
-    return render_template('people.html', requests=requests, user=auth.current_user)
+    return render_template('people.html', requests=requests, user=auth.current_user, user_icon=getUserPhoto)
+
+def getUserPhoto():
+    return db.collection('Users').document(auth.current_user.get('localId')).get().to_dict().get('photoURL')
 
 if __name__ == '__main__':
    app.run(debug=True)
