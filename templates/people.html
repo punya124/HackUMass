@@ -61,7 +61,11 @@
                 <div class="box-list-head">
                     <h1>People:</h1>
                     <!-- Post Event Button -->
+                    {% if user != None:%}
                     <button class="post-button" onclick="openModal()">Post Request</button>
+                    {%else%}
+                    <button class="post-button" onclick="window.location='/login'">Post Request</button>
+                    {%endif%}
                 </div>
                 <!-- Modal for Event Form -->
                 <div class="modal" id="eventModal">
