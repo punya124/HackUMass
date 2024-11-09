@@ -43,7 +43,7 @@
     flex-grow: 1; 
     
 }
-.post-event-button {
+.post-button {
     padding: 10px;
     margin: 10px 0px;
     font-size: 1em;
@@ -54,7 +54,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.post-event-button:hover {
+.post-button:hover {
     background-color: #0069d9;
 }
 
