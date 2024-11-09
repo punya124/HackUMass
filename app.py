@@ -29,6 +29,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html', user=auth.current_user)
 
+@app.route("/account")
+def account():
+    return render_template('accounts.html', user=auth.current_user)
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -67,10 +71,7 @@ def events():
             'Description': event_description
         })
 
-    eventList = db.collection('Events').get()
-    events = [event.to_dict() for event in eventList]
-
-    return render_template('events.html', user=auth.current_user, events = events)
+    return render_template('events.html', user=auth.current_user)
 
 @app.route("/signUp", methods=['GET', 'POST'])
 def signUp():
