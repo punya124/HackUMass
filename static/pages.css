@@ -276,8 +276,7 @@ body {
 }
 
 /* Your existing styles above remain unchanged */
-
-/* Media Query for Mobile Devices */
+/* Mobile-specific styles */
 @media (max-width: 768px) {
     /* Search bar adjustments */
     .search-bar {
@@ -317,5 +316,56 @@ body {
         width: 90%;
         max-width: 400px;
         padding: 20px;
+    }
+
+    /* Filter Section adjustments for mobile */
+    .filter-toggle {
+        display: block;
+        background-color: rgb(125, 38, 34);
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 1em;
+        text-align: left;
+        width: 100%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 10px;
+    }
+
+    .filter-toggle:hover {
+        background-color: rgb(161, 70, 65);
+    }
+
+    .filter-section {
+        display: none; /* Hidden by default on mobile */
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+
+    .filter-section.active {
+        display: block; /* Show filters when active */
+    }
+
+    /* Ensure the filter is full-width under the search bar */
+    .filter-section,
+    .filter-toggle {
+        width: 100%;
+    }
+}
+
+/* Desktop view (default) */
+@media (min-width: 769px) {
+    .filter-toggle {
+        display: none; /* Hide the filter button on desktop */
+    }
+
+    .filter-section {
+        display: block; /* Show filters normally on desktop */
+        width: 200px;
+        margin-top: 0;
     }
 }

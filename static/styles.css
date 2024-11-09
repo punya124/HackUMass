@@ -88,9 +88,10 @@ a {
 
 /* Your existing styles above remain unchanged */
 
+/* Your existing styles remain unchanged */
+
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
-    /* Top bar adjustments */
     #topbar {
         flex-direction: column;
         align-items: flex-start;
@@ -98,41 +99,34 @@ a {
         padding: 10px;
     }
 
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        color: white;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    /* Initially hide nav-links on mobile */
     #nav-links {
+        display: none;
         flex-direction: column;
-        align-items: flex-start;
+        width: 100%;
         gap: 10px;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    #logo {
-        width: 100%;
-        text-align: center;
-    }
-
-    /* Container adjustments */
-    .container {
-        flex-direction: column;
+        background-color: #000;
         padding: 10px;
-        gap: 20px;
+        border-top: 1px solid #333;
     }
 
-    .filter-section {
-        width: 100%;
-        margin-bottom: 20px;
+    #nav-links a {
+        padding: 10px;
+        border-radius: 4px;
+        text-align: left;
     }
 
-    .main {
-        width: 100%;
-        margin: 0;
-        left: 0;
-        max-width: 100%;
-    }
-
-    /* Button adjustments */
-    #signup-button, #accnt-button {
-        width: 100%;
-        margin-top: 10px;
+    #nav-links.active {
+        display: flex;
     }
 }
