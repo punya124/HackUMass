@@ -91,9 +91,52 @@ def signUp():
             print("Passwords don't match")
     return render_template('signUp.html')
 
-@app.route("/people")
+@app.route("/people", methods=['GET', 'POST'])
 def people():
-    return render_template('people.html', user=auth.current_user)
+    if request.method == 'POST':
+        # Retrieve form values
+        request_name = request.form.get('eventName')
+        person_name = request.form.get('personName')
+        request_type = request.form.get('eventType')
+        event_date = request.form.get('eventDate')
+        event_time = request.form.get('eventTime')
+        location = request.form.get('location')
+        cost = request.form.get('cost')
+        pay = request.form.get('requestPay')
+        description = request.form.get('description')
+        
+        # Handling file upload (profile image)
+        event_image = request.files.get('eventImage')
+        image_url = None
+        if event_image:
+            # Add code here to handle saving or uploading the file
+            # e.g., save locally or upload to a cloud storage service and get the URL
+            # image_url = 'URL of the uploaded image'
+            pass
+
+        # Combine date and time for Firestore (optional)
+        datetime = f"{event_date} {event_time}"
+
+        # Add the data to Firestore
+        db.collection('Requests').add({
+            'RequestName': request_name,
+            'PersonName': person_name,
+            'RequestType': request_type,
+            'Date': event_date,
+            'Time': event_time,
+            'DateTime': datetime,  # Optional: combined datetime
+            'Location': location,
+            'Cost': cost,
+            'Pay': pay,
+            'Description': description,
+            'ImageURL': image_url  # Include the image URL if available
+        })
+
+    # Retrieve events from Firestore ordered by date
+    request_list = db.collection('Requests').order_by('Date', direction=firestore.Query.ASCENDING).get()
+    requests = [request.to_dict() for request in request_list]
+
+    return render_template('people.html', requests=requests)
 
 if __name__ == '__main__':
    app.run(debug=True)

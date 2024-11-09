@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
     <div id="topbar">
         <div id="logo" href="index.html"><a href="/">USocial</a></div>
@@ -26,8 +28,8 @@
         </div>
     </div>
 
-    
-    
+
+
     <div class="container">
         <!-- Filter Section -->
         <div class="filter-section">
@@ -47,149 +49,132 @@
                 </label>
             </div>
         </div>
-    
-    
-    <div class="main">
-    <div class="search-bar" > 
-        <input type="text" class="search-input" placeholder="Search...">
-        <button class="search-button">Search</button>
-    </div>
-    <div class="box-list">
-
-    <div class="box-list-head">
-        <h1>People:</h1>
-        <!-- Post Event Button -->
-        <button class="post-button" onclick="openModal()">Post Request</button>
-    </div>
-    <!-- Modal for Event Form -->
-    <div class="modal" id="eventModal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <div class="modal-header">Post New Request</div>
-            <form id="eventForm">
-                <div class="form-group">
-                    <label for="requestName">Request Name:</label>
-                    <input type="text" id="eventName" name="eventName" required>
-                </div>
-                <div class="form-group">
-                    <label for="personName">Name:</label>
-                    <input type="text" id="personName" name="personName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="eventType">Request Type:</label>
-                    <select id="eventType" name="eventType" required>
-                        <option value="">Select Event Type</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="ride">Ride</option>
-                        <option value="notes">Notes</option>
-                        <option value="option1">option1</option>
-                        <option value="option2">option2</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="eventImage">Your profile:</label>
-                    <input type="file" id="eventImage" name="eventImage" accept="image/*">
-                </div>
-
-                <div class="form-group">
-                    <label for="eventDate">Event Date:</label>
-                    <input type="date" id="eventDate" name="eventDate" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="requestTime">Request Time:</label>
-                    <input type="time" id="eventTime" name="eventTime" required>
-                </div>
 
 
-                <div class="form-group">
-                    <label for="location">Location:</label>
-                    <input type="text" id="location" name="location" required>
+        <div class="main">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-button">Search</button>
+            </div>
+            <div class="box-list">
+
+                <div class="box-list-head">
+                    <h1>People:</h1>
+                    <!-- Post Event Button -->
+                    <button class="post-button" onclick="openModal()">Post Request</button>
+                </div>
+                <!-- Modal for Event Form -->
+                <div class="modal" id="eventModal">
+                    <div class="modal-content">
+                        <span class="close-button" onclick="closeModal()">&times;</span>
+                        <div class="modal-header">Post New Request</div>
+                        <form id="eventForm" method="post">
+                            <div class="form-group">
+                                <label for="requestName">Request Name:</label>
+                                <input type="text" id="eventName" name="eventName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="personName">Name:</label>
+                                <input type="text" id="personName" name="personName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventType">Request Type:</label>
+                                <select id="eventType" name="eventType" required>
+                                    <option value="">Select Event Type</option>
+                                    <option value="shopping">Shopping</option>
+                                    <option value="ride">Ride</option>
+                                    <option value="notes">Notes</option>
+                                    <option value="option1">option1</option>
+                                    <option value="option2">option2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="eventImage">Your profile:</label>
+                                <input type="file" id="eventImage" name="eventImage" accept="image/*">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventDate">Event Date:</label>
+                                <input type="date" id="eventDate" name="eventDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="requestTime">Request Time:</label>
+                                <input type="time" id="eventTime" name="eventTime" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="location">Location:</label>
+                                <input type="text" id="location" name="location" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cost">Cost:</label>
+                                <input type="text" id="cost" value="$" name="cost" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="requestPay">Pay:</label>
+                                <input type="text" id="requestPay" value="$" name="requestPay" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <textarea id="description" name="description" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-button">Submit</button>
+                        </form>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="cost">Cost:</label>
-                    <input type="text" id="cost" value="$" name="cost" required>
-                </div>
+                {%for request in requests%}
+                <!-- Box 1 -->
+                <div class="box">
+                    <div class="box-image-section">
+                        <img src="https://via.placeholder.com/100" alt="Sample Image" class="circle">
+                        <div class="name-tag">{{request.PersonName}}</div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="requestPay">Pay:</label>
-                    <input type="text" id="requestPay" value="$" name="requestPay" required>
+                    <div class="box-content">
+                        <h3 class="box-title">{{request.PequestName}}</h3>
+                        <p class="box-description">{{request.Description}}.</p>
+                    </div>
+                    <div class="box-items">
+                        <ul>
+                            <li>{{request.DateTime}}</li>
+                            <li>{{request.Location}}</li>
+                            <li>{{request.Cost}}</li>
+                        </ul>
+                        <button class="accept-button">Accept</button>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
+                {% endfor %}
+                <!-- Additional boxes can be added similarly -->
+            </div>
         </div>
-    </div>
-    <!-- Box 1 -->
-    <div class="box">
-        <div class="box-image-section">
-            <img src="https://via.placeholder.com/100" alt="Sample Image" class="circle" >
-            <div class="name-tag">Alex Chan</div>
-        </div>        
-        
-        <div class="box-content">
-            <h3 class="box-title">Request Task</h3>
-            <p class="box-description">This is a description of the box content. It provides more details about the item in the box.</p>
-        </div>
-        <div class="box-items">
-            <ul>
-                <li>Time:</li>
-                <li>Location:</li>
-                <li>Cost</li>
-            </ul>
-            <button class="accept-button">Accept</button>
-        </div>
-    </div>
 
-    <!-- Box 2 -->
-    <div class="box">
-        <div class="box-image-section">
-            <img class="circle" src="https://via.placeholder.com/100" alt="Sample Image">
-            <div class="name-tag">Punya Guyandi</div>
-        </div> 
-        <div class="box-content">
-            <h3 class="box-title">Box Title 2</h3>
-            <p class="box-description">This is another description of a different box content. It provides additional information.</p>
-        </div>
-        <div class="box-items">
-            <ul>
-                <li>Time:</li>
-                <li>Location:</li>
-                <li>Cost</li>
-            </ul>
-            <button class="accept-button">Accept</button>
-        </div>
-    </div>
-    
-        <!-- Additional boxes can be added similarly -->
-    </div>
-</div>
+        <script>
+            // Open modal
+            function openModal() {
+                document.getElementById("eventModal").style.display = "flex";
+            }
 
-<script>
-    // Open modal
-    function openModal() {
-        document.getElementById("eventModal").style.display = "flex";
-    }
+            // Close modal
+            function closeModal() {
+                document.getElementById("eventModal").style.display = "none";
+            }
 
-    // Close modal
-    function closeModal() {
-        document.getElementById("eventModal").style.display = "none";
-    }
+            // Close modal when clicking outside of it
+            window.onclick = function (event) {
+                const modal = document.getElementById("eventModal");
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        </script>
 
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-        const modal = document.getElementById("eventModal");
-        if (event.target == modal) {
-            closeModal();
-        }
-    }
-</script>
-    
 </body>
+
 </html>
