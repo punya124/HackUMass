@@ -1,12 +1,17 @@
 /* Search Bar CSS */
 .search-bar {
     margin-top: 20px;
+    /* margin-left:0;
+    margin-right: 0; */
+    padding-left: 0%;
+    padding-right: 0%;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
 .search-input {
+    margin-left: 0%;
     width: 100%;
     max-width: 600px;
     padding: 10px;
@@ -27,13 +32,32 @@
     transition: background-color 0.3s ease;
 }
 .search-button:hover {
-    background-color: #0056b3;
+    background-color: #3d3e3e;
 }
 
 .main {
     margin-top: 0;
     margin-left: 10%;
+    position: relative; /* Necessary for absolute positioning of Post Event button */
+    flex-grow: 1; 
+    
 }
+.post-event-button {
+    padding: 10px;
+    margin: 10px 0px;
+    font-size: 1em;
+    background-color: rgb(161, 70, 65);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.post-event-button:hover {
+    background-color: #0069d9;
+}
+
+
 
 
 
@@ -137,7 +161,8 @@ body {
     transition: background-color 0.3s ease;
 }
 .accept-button:hover {
-    background-color: #45a049;
+    background-color: #3d3e3e;
+
 }
 
 /* filter section*/
@@ -169,4 +194,12 @@ body {
     font-size: 0.9em;
     margin-bottom: 8px;
     cursor: pointer;
+}
+
+.box-list-head{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }

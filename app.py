@@ -43,7 +43,7 @@ def logout():
 
 @app.route("/events")
 def events():
-    return render_template('events.html')
+    return render_template('events.html', user=auth.current_user)
 
 @app.route("/signUp", methods=['GET', 'POST'])
 def signUp():
@@ -64,7 +64,7 @@ def signUp():
 
 @app.route("/people")
 def people():
-    return render_template('people.html')
+    return render_template('people.html', user=auth.current_user)
 
 if __name__ == '__main__':
    app.run(debug=True)

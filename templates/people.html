@@ -6,8 +6,9 @@
     <title>People</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='pages.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
+    <script src="https://kit.fontawesome.com/4d35a85ce5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div id="topbar">
@@ -16,7 +17,12 @@
             <a href="/events">Events</a>
             <a href="/people">People</a>
             <a href="#connect">Connect</a>
+            {%if user == None:%}
             <button onclick="window.location = '/login'" id="signup-button">Login</button>
+            {%else%}
+            <button onclick="window.location = '/logout'" id="accnt-button">
+                &#xf406;</button>
+            {%endif%}
         </div>
     </div>
 
