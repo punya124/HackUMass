@@ -67,7 +67,10 @@ def events():
             'Description': event_description
         })
 
-    return render_template('events.html', user=auth.current_user)
+    eventList = db.collection('Events').get()
+    events = [event.to_dict() for event in eventList]
+
+    return render_template('events.html', user=auth.current_user, events = events)
 
 @app.route("/signUp", methods=['GET', 'POST'])
 def signUp():

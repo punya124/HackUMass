@@ -111,24 +111,26 @@
                     </div>
                 </div>
 
+                {% for event in events:%}
+
                 <!-- Box 1 -->
                 <div class="box">
                     <img src="https://via.placeholder.com/100" alt="Sample Image">
                     <div class="box-content">
-                        <h3 class="box-title">Box Title 1</h3>
-                        <p class="box-description">This is a description of the box content. It provides
-                            more details
-                            about the item in the box.</p>
+                        <h3 class="box-title">{{event.Name}}</h3>
+                        <p class="box-description">{{event.Description}}</p>
                     </div>
                     <div class="box-items">
                         <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
+                            <li>{{event.Date}}</li>
+                            <li>{{event.Location}}</li>
+                            <li>{{event.Cost}}</li>
                         </ul>
                         <button class="accept-button">Accept</button>
                     </div>
                 </div>
+
+                {%endfor%}
 
                 <!-- Box 2 -->
                 <div class="box">
