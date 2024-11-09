@@ -61,3 +61,24 @@ a {
 #signup-button:hover {
     background-color: rgb(161, 70, 65);
 }
+
+#accnt-button {
+    width: 4vh;
+    height: 4vh;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    font-size: 1rem;
+    color: #333;
+    z-index: 2;
+    font-style: normal;
+    font-family: FontAwesome;
+    font-weight: 900;
+}
+
+#accnt-button:hover {
+    background-color: rgb(161, 70, 65);
+}
