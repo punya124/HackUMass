@@ -89,7 +89,9 @@ def events():
         event_cost = request.form.get('eventCost')
         event_description = request.form.get('eventDescription')
 
-        response = requests.get(URL, headers=headers)
+        
+        URLNEW = f'https://api.pexels.com/v1/search?query={event_type}&per_page=80'
+        response = requests.get(URLNEW, headers=headers)
 
         if response.status_code == 200:
             data = response.json()
@@ -201,7 +203,6 @@ def getUserPhoto():
         # Directly access the 'photoURL' field in a single line
         photo_url = db.collection('Users').document(auth.current_user.get('localId')).get(field_paths=['photoURL']).to_dict().get('photoURL')
         return photo_url
-
     else:
         return ''
 
