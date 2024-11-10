@@ -95,7 +95,11 @@ def events():
             'Description': event_description
         })
 
-    eventList = db.collection('Events').order_by('Date', direction=firestore.Query.ASCENDING).get()
+    if (request.args):
+        eventList = filterResults(request.args, 'Events')
+    else:
+        eventList = db.collection('Events').order_by('Date', direction=firestore.Query.ASCENDING).get()
+    
     events = [event.to_dict() for event in eventList]
 
     return render_template('events.html', user=auth.current_user, events = events, user_icon=getUserPhoto())
@@ -193,6 +197,10 @@ def getUserPhoto():
 
     else:
         return ''
+
+
+def filterResults(args, path):
+    return db.collection(path).get()
 
 if __name__ == '__main__':
    app.run(debug=True)

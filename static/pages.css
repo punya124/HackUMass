@@ -1,4 +1,9 @@
 /* Search Bar CSS */
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .search-bar {
     margin-top: 20px;
     width: 100%;
