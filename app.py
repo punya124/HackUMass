@@ -33,7 +33,7 @@ firebaseConfig = {
 firebase_p = pyrebase.initialize_app(firebaseConfig)
 db = firestore.client()
 auth = firebase_p.auth()
-storage = firebase_p.storage()
+# storage = firebase_p.storage()
 
 app = Flask(__name__)
 
@@ -187,7 +187,10 @@ def people():
 
 def getUserPhoto():
     if(auth.current_user):
-        return db.collection('Users').document(auth.current_user.get('localId')).get().to_dict().get('photoURL')
+        # Directly access the 'photoURL' field in a single line
+        photo_url = db.collection('Users').document(auth.current_user.get('localId')).get(field_paths=['photoURL']).to_dict().get('photoURL')
+        return photo_url
+
     else:
         return ''
 
