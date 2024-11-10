@@ -18,7 +18,6 @@
         <div id="nav-links">
             <a href="/events">Events</a>
             <a href="/people">People</a>
-            <a href="#connect">Connect</a>
             {%if user == None:%}
             <button onclick="window.location = '/login'" id="signup-button">Login</button>
             {%else%}
@@ -137,7 +136,15 @@
                             <li>{{request.DateTime}}</li>
                             <li>{{request.Location}}</li>
                         </ul>
-                        <button class="accept-button">Join</button>
+                        {% if user and user.get('localId') in request.attendees %}
+                        <!-- If the user has already RSVP'd, show a cancel button -->
+                        <button class="accept-button"
+                            onclick="window.location='/cancel_join?eventId={{request.id}}'">Cancel</button>
+                        {% else %}
+                        <!-- If the user hasn't RSVP'd, show the RSVP button -->
+                        <button class="accept-button"
+                            onclick="window.location='/join?eventId={{request.id}}'">Join</button>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
