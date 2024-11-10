@@ -19,7 +19,6 @@
         <div id="nav-links">
             <a href="/events">Events</a>
             <a href="/people">People</a>
-            <a href="#connect">Connect</a>
             {%if user == None:%}
             <button onclick="window.location = '/login'" id="signup-button">Login</button>
             {%else%}
@@ -59,39 +58,18 @@
             <div class="section-header">Events</div>
             <!-- Grid Container -->
             <div class="grid">
+                {% for event in events%}
                 <div class="rqstcard">
                     <div class="rqstcard-content">
                         <div class="text">
-                            <p class="role">Frat Party</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                lacinia
-                                odio
-                                vitae vestibulum.</p>
-                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                            <p class="details">Location: Library, Room 101</p>
-                            <p class="details">Responded: </p>
-
+                            <p class="role">{{event.Name}}</p>
+                            <p class="description">{{event.Description}}</p>
+                            <p class="details">Date/Time: {{event.Date}}</p>
+                            <p class="details">Location: {{event.Location}}</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="rqstcard">
-                    <div class="rqstcard-content">
-                        <div class="text">
-                            <p class="role">Toga Party</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                lacinia
-                                odio
-                                vitae vestibulum.</p>
-                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                            <p class="details">Location: Library, Room 101</p>
-                            <p class="details">Responded: </p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more cards as needed -->
+                {%endfor%}
             </div>
         </div>
 
@@ -103,39 +81,20 @@
             <div class="section-header">Requests</div>
             <!-- Grid Container -->
             <div class="grid">
+                {%for request in requests%}
                 <div class="rqstcard">
                     <div class="rqstcard-content">
                         <div class="text">
-                            <p class="role">Study Partner</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                lacinia
-                                odio
-                                vitae vestibulum.</p>
-                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                            <p class="details">Location: Library, Room 101</p>
-                            <p class="details">Accepted: </p>
+                            <p class="role">{{request.Name}}</p>
+                            <p class="description">{{request.Description}}</p>
+                            <p class="details">Date/Time: {{request.DateTime}}</p>
+                            <p class="details">Location: {{request.Location}}</p>
+                            <p class="details">{{request.PersonName}}</p>
 
                         </div>
                     </div>
                 </div>
-
-                <div class="rqstcard">
-                    <div class="rqstcard-content">
-                        <div class="text">
-                            <p class="role">Study Partner</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                lacinia
-                                odio
-                                vitae vestibulum.</p>
-                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                            <p class="details">Location: Library, Room 101</p>
-                            <p class="details">Accepted: </p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more cards as needed -->
+                {%endfor%}
             </div>
         </div>
 

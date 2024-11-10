@@ -17,7 +17,6 @@
         <div id="nav-links">
             <a href="/events">Events</a>
             <a href="/people">People</a>
-            <a href="#connect">Connect</a>
             {%if user == None:%}
             <button onclick="window.location = '/login'" id="signup-button">Login</button>
             {%else%}
@@ -70,7 +69,7 @@
                         <p class="role">{{request.RequestName}}</p>
                         <p class="description">{{request.Description}}</p>
                         <p class="details">Date/Time: {{request.DateTime}}</p>
-                        <p class="details">Location: {{request.location}}</p>
+                        <p class="details">Location: {{request.Location}}</p>
                     </div>
                 </div>
                 <button class="accept-btn">Accept</button>
