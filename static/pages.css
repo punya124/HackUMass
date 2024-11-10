@@ -178,7 +178,6 @@ body {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
 }
 
 .box img {
@@ -235,16 +234,20 @@ body {
 
 .box-items {
     margin-left: auto;
-    width:200px;
+    width: 200px;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .box-items ul {
-    list-style-type: disc;
-    padding-left: 20px;
+    list-style-type: none;
+    /* Remove bullets */
+    padding-left: 0;
+    /* Remove left padding */
     margin: 0;
 }
 
@@ -252,10 +255,11 @@ body {
     font-size: 0.8em;
     color: #333;
     margin-bottom: 5px;
+    text-align: right;
 }
 
-.box-type{
-    color:rgb(125, 38, 34);
+.box-type {
+    color: rgb(125, 38, 34);
     font-size: 10px;
 }
 
@@ -334,4 +338,10 @@ body {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendees-count {
+    font-size: 0.8rem;
+    color: #333;
+    margin-right: 10px;
 }

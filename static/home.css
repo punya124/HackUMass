@@ -264,7 +264,7 @@ h1 {
 }
 
 .profile-img {
-    width: 100%;
+    width: 80px;
     aspect-ratio: 1;
     border-radius: 50%;
 }

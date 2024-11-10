@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,161 +10,136 @@
 
     <script src="https://kit.fontawesome.com/4d35a85ce5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
-    
+
 </head>
+
 <body>
-<div id="topbar">
-    <div id="logo" href="index.html"><a href="/">USocial</a></div>
-    <div id="nav-links">
-        <a href="/events">Events</a>
-        <a href="/people">People</a>
-        <a href="#connect">Connect</a>
-        {%if user == None:%}
-        <button onclick="window.location = '/login'" id="signup-button">Login</button>
-        {%else%}
-        <button onclick="window.location = '/logout'" id="accnt-button">
-            &#xf406;</button>
-        {%endif%}
-    </div>
-</div>
-    
-<!-- Account Section -->
-<div class="account-container">
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <div class="profile-picture"></div>
-        <div class="profile-name">User Name</div>
-    </div>
-
-    <!-- Details Section -->
-    <div class="details">
-        <div class="section-header">Details</div>
-        <div class="detail-item">
-            <span class="detail-label">Name: John Doe</span>
-            <button class="edit-button">Edit</button>
-        </div>
-        <div class="detail-item">
-            <span class="detail-label">Email: johndoe@example.com</span>
-            <button class="edit-button">Edit</button>
-        </div>
-        <div class="detail-item">
-            <span class="detail-label">Password: ••••••••</span>
-            <button class="edit-button">Edit</button>
-        </div>
-        <div class="detail-item">
-            <span class="detail-label">Other Information: Lorem ipsum dolor sit amet</span>
-            <button class="edit-button">Edit</button>
+    <div id="topbar">
+        <div id="logo" href="index.html"><a href="/">USocial</a></div>
+        <div id="nav-links">
+            <a href="/events">Events</a>
+            <a href="/people">People</a>
+            <a href="#connect">Connect</a>
+            {%if user == None:%}
+            <button onclick="window.location = '/login'" id="signup-button">Login</button>
+            {%else%}
+            <button onclick="window.location = '/logout'" id="accnt-button">
+                &#xf08b;</button>
+            {%endif%}
         </div>
     </div>
 
-    <!-- Preferences Section -->
-    <div class="preferences">
-        <div class="section-header">Preferences</div>
-        <div class="preference-item">
-            <span class="preference-label">Preference 1</span>
-            <div class="button-group">
+    <!-- Account Section -->
+    <div class="account-container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-picture"><img src="{{user_icon}}"></div>
+            <div class="profile-name">{{user.get('name')}}</div>
+        </div>
+
+        <!-- Details Section -->
+        <div class="details">
+            <div class="section-header">Details</div>
+            <div class="detail-item">
+                <span class="detail-label">Name: {{user.get('name')}}</span>
                 <button class="edit-button">Edit</button>
-                <button class="remove-button">-</button>
             </div>
-        </div>
-        <div class="preference-item">
-            <span class="preference-label">Preference 2</span>
-            <div class="button-group">
+            <div class="detail-item">
+                <span class="detail-label">Email: {{user.get('email')}}</span>
                 <button class="edit-button">Edit</button>
-                <button class="remove-button">-</button>
             </div>
-        </div>
-        <div class="preference-item">
-            <span class="preference-label">Preference 3</span>
-            <div class="button-group">
+            <div class="detail-item">
+                <span class="detail-label">Password: ••••••••</span>
                 <button class="edit-button">Edit</button>
-                <button class="remove-button">-</button>
-            </div>
-        </div>
-        <button class="add-preference-button">Add Preference</button>
-    </div>
-
-<!-- Events Section -->
-<div class="box-section">
-    <div class="section-header">Events</div>
-    <!-- Grid Container -->
-    <div class="grid">
-        <div class="rqstcard">
-            <div class="rqstcard-content">
-                <div class="text">
-                    <p class="role">Frat Party</p>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                        odio
-                        vitae vestibulum.</p>
-                    <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                    <p class="details">Location: Library, Room 101</p>
-                    <p class="details">Responded: </p>
-
-                </div>
             </div>
         </div>
 
-        <div class="rqstcard">
-            <div class="rqstcard-content">
-                <div class="text">
-                    <p class="role">Toga Party</p>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                        odio
-                        vitae vestibulum.</p>
-                    <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                    <p class="details">Location: Library, Room 101</p>
-                    <p class="details">Responded: </p>
+        <!-- Events Section -->
+        <div class="box-section">
+            <div class="section-header">Events</div>
+            <!-- Grid Container -->
+            <div class="grid">
+                <div class="rqstcard">
+                    <div class="rqstcard-content">
+                        <div class="text">
+                            <p class="role">Frat Party</p>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                                lacinia
+                                odio
+                                vitae vestibulum.</p>
+                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                            <p class="details">Location: Library, Room 101</p>
+                            <p class="details">Responded: </p>
 
-                </div>
-            </div>
-        </div>
-        
-        <!-- Add more cards as needed -->
-    </div>
-</div>
-
-
-
-
-    <!-- Reuqests Section -->
-    <div class="box-section">
-        <div class="section-header">Requests</div>
-        <!-- Grid Container -->
-        <div class="grid">
-            <div class="rqstcard">
-                <div class="rqstcard-content">
-                    <div class="text">
-                        <p class="role">Study Partner</p>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                            odio
-                            vitae vestibulum.</p>
-                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                        <p class="details">Location: Library, Room 101</p>
-                        <p class="details">Accepted: </p>
-
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="rqstcard">
-                <div class="rqstcard-content">
-                    <div class="text">
-                        <p class="role">Study Partner</p>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                            odio
-                            vitae vestibulum.</p>
-                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                        <p class="details">Location: Library, Room 101</p>
-                        <p class="details">Accepted: </p>
+                <div class="rqstcard">
+                    <div class="rqstcard-content">
+                        <div class="text">
+                            <p class="role">Toga Party</p>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                                lacinia
+                                odio
+                                vitae vestibulum.</p>
+                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                            <p class="details">Location: Library, Room 101</p>
+                            <p class="details">Responded: </p>
 
+                        </div>
                     </div>
                 </div>
+
+                <!-- Add more cards as needed -->
             </div>
-            
-            <!-- Add more cards as needed -->
         </div>
-    </div>
+
+
+
+
+        <!-- Reuqests Section -->
+        <div class="box-section">
+            <div class="section-header">Requests</div>
+            <!-- Grid Container -->
+            <div class="grid">
+                <div class="rqstcard">
+                    <div class="rqstcard-content">
+                        <div class="text">
+                            <p class="role">Study Partner</p>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                                lacinia
+                                odio
+                                vitae vestibulum.</p>
+                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                            <p class="details">Location: Library, Room 101</p>
+                            <p class="details">Accepted: </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rqstcard">
+                    <div class="rqstcard-content">
+                        <div class="text">
+                            <p class="role">Study Partner</p>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                                lacinia
+                                odio
+                                vitae vestibulum.</p>
+                            <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
+                            <p class="details">Location: Library, Room 101</p>
+                            <p class="details">Accepted: </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more cards as needed -->
+            </div>
+        </div>
 
 
 </body>
+
 </html>

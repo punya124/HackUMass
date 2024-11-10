@@ -1,5 +1,5 @@
 import random
-from flask import Flask, flash, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 import pyrebase
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -16,7 +16,7 @@ headers = {
 }
 
 
-cred = credentials.Certificate("serviceAccountKey.json")
+cred = credentials.Certificate("usocial-70895-firebase-adminsdk-3nfqt-d7ff690e5b.json")
 firebase_admin.initialize_app(cred)
 
 firebaseConfig = {
@@ -39,11 +39,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template('index.html', user=auth.current_user, user_icon=getUserPhoto())
+    eventList = db.collection('Events').order_by('Date', direction=firestore.Query.ASCENDING).limit(6).get()
+    events = [{"id": event.id, **event.to_dict()} for event in eventList]
+    request_list = db.collection('Requests').order_by('Date', direction=firestore.Query.ASCENDING).limit(6).get()
+    requests = [{"id": request.id, **request.to_dict()} for request in request_list]
+    return render_template('index.html', user=auth.current_user, user_icon=getUserPhoto(), events=events, requests=requests)
 
 @app.route("/account")
 def account():
-    return render_template('accounts.html', user=auth.current_user, user_icon=getUserPhoto())
+    if auth.current_user:
+        CurrentUser = db.collection('Users').document(auth.current_user.get('localId')).get().to_dict()
+    else:
+        return redirect(url_for('login'))
+    return render_template('accounts.html', user=CurrentUser, user_icon=getUserPhoto())
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -100,7 +108,7 @@ def events():
     else:
         eventList = db.collection('Events').order_by('Date', direction=firestore.Query.ASCENDING).get()
     
-    events = [event.to_dict() for event in eventList]
+    events = [{"id": event.id, **event.to_dict()} for event in eventList]
 
     return render_template('events.html', user=auth.current_user, events = events, user_icon=getUserPhoto())
 
@@ -152,18 +160,8 @@ def people():
         event_date = request.form.get('eventDate')
         event_time = request.form.get('eventTime')
         location = request.form.get('location')
-        cost = request.form.get('cost')
-        pay = request.form.get('requestPay')
         description = request.form.get('description')
-        
-        # Handling file upload (profile image)
-        event_image = request.files.get('eventImage')
-        image_url = None
-        if event_image:
-            # Add code here to handle saving or uploading the file
-            # e.g., save locally or upload to a cloud storage service and get the URL
-            # image_url = 'URL of the uploaded image'
-            pass
+        image_url = currentUser.get('photoURL')
 
         # Combine date and time for Firestore (optional)
         datetime = f"{event_date} {event_time}"
@@ -177,14 +175,16 @@ def people():
             'Time': event_time,
             'DateTime': datetime,  # Optional: combined datetime
             'Location': location,
-            'Cost': cost,
-            'Pay': pay,
             'Description': description,
             'ImageURL': image_url  # Include the image URL if available
         })
 
     # Retrieve events from Firestore ordered by date
-    request_list = db.collection('Requests').order_by('Date', direction=firestore.Query.ASCENDING).get()
+    if (request.args):
+        request_list = filterResults(request.args, 'Requests')
+    else:
+        request_list = db.collection('Requests').order_by('Date', direction=firestore.Query.ASCENDING).get()
+    
     requests = [request.to_dict() for request in request_list]
 
     return render_template('people.html', requests=requests, user=auth.current_user, user_icon=getUserPhoto())
@@ -200,7 +200,113 @@ def getUserPhoto():
 
 
 def filterResults(args, path):
-    return db.collection(path).get()
+    # Initialize the Firestore collection reference
+    query = db.collection(path)
+    
+    # Filter by event type (if multiple, handle as an array for Firestore 'in' query)
+    event_types = args.getlist('event_type')
+    if event_types:
+        if path=='Events':
+            query = query.where('Type', 'in', event_types)
+        elif path=='Requests':
+            print('using rqsts')
+            query = query.where('RequestType', 'in', event_types)
+    
+    # Filter by start date (if provided)
+    start_date = args.get('start_date')
+    if start_date != '' and start_date:
+        query = query.where('Date', '>=', start_date)
+    else:
+        print('no start date')
+
+    # Filter by end date (if provided)
+    end_date = args.get('end_date')
+    if end_date != '' and end_date:
+        query = query.where('Date', '<=', end_date)
+    else:
+        print('no end date')
+
+    # Execute and return the filtered query
+    results = query.get()
+    if not results:
+        print('no results found')
+    return results
+
+
+@app.route('/rsvp', methods=['GET'])
+def rsvp():
+    # Get the event ID from the URL
+    event_id = request.args.get('eventId')
+    
+    if not event_id:
+        print("Event ID is required!", "danger")
+        return redirect(url_for('home'))  # Adjust the redirect based on your app structure
+
+    # Get the current user ID from Firebase Authentication
+    user = auth.current_user
+
+    if not user:
+        print("User is not authenticated!", "danger")
+        return redirect(url_for('login'))  # Adjust redirect based on your app structure
+    
+    user_id = user.get('localId')
+
+    # Get a reference to the event document
+    event_ref = db.collection('Events').document(event_id)
+
+    # Fetch the event document
+    event_doc = event_ref.get()
+
+    if event_doc.exists:
+        event_data = event_doc.to_dict()
+
+        # Check if 'attendees' field exists and update it
+        attendees = event_data.get('attendees', [])
+
+        # If the user is not already in the attendees list, add them
+        if user_id not in attendees:
+            attendees.append(user_id)
+
+            # Update the event document with the new attendees array
+            event_ref.update({'attendees': attendees})
+
+            print("RSVP successful!", "success")
+        else:
+            print("You have already RSVP'd to this event.", "warning")
+    else:
+        print("Event not found.", "danger")
+
+    return redirect(url_for('events')) 
+
+@app.route('/cancel_rsvp', methods=['GET'])
+def cancel_rsvp():
+    event_id = request.args.get('eventId')
+    user = auth.current_user
+
+    if not event_id or not user:
+        print("Event ID or user ID missing", "danger")
+        return redirect(url_for('home'))
+    
+    user_id = user.get('localId')
+
+    event_ref = db.collection('Events').document(event_id)
+    event_doc = event_ref.get()
+
+    if event_doc.exists:
+        event_data = event_doc.to_dict()
+        attendees = event_data.get('attendees', [])
+
+        if user_id in attendees:
+            attendees.remove(user_id)
+            event_ref.update({'attendees': attendees})
+            print("RSVP canceled.", "success")
+        else:
+            print("You were not RSVP'd for this event.", "warning")
+    else:
+        print("Event not found.", "danger")
+
+    return redirect(url_for('events'))
+
 
 if __name__ == '__main__':
    app.run(debug=True)

@@ -22,7 +22,7 @@
             {% if user == None %}
             <button onclick="window.location = '/login'" id="signup-button">Login</button>
             {% else %}
-            <button onclick="window.location = '/logout'" id="accnt-button"><img src="{{user_icon}}"></button>
+            <button onclick="window.location = '/account'" id="accnt-button"><img src="{{user_icon}}"></button>
             {% endif %}
         </div>
     </div>
@@ -31,40 +31,40 @@
     <div class="container">
         <!-- Filter Section -->
         <div class="filter-section">
-            <div class="filter-header">Filter</div>
-            <div class="filter-options">
-                <label>
-                    <input type="checkbox"> Party
-                </label>
-                <label>
-                    <input type="checkbox"> Gathering
-                </label>
-                <label>
-                    <input type="checkbox"> Field Trip
-                </label>
-                <label>
-                    <input type="checkbox"> Sports Event
-                </label>
-                
-                <label>
-                    Start Date: <input type="date">
-                </label>
+            <form method="GET"> <!-- Replace /your-endpoint with the actual URL -->
+                <div class="filter-header">Filter</div>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="event_type" value="Party"> Party
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Gathering"> Gathering
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Field-Trip"> Field Trip
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Sports-Event"> Sports Event
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Study-Session"> Study Session
+                    </label>
+                    <label>
+                        Start Date: <input type="date" name="start_date">
+                    </label>
 
-                <label>
-                    End Date: <input type="date">
-                </label>
-                <label>
-                    Price: <input type="text">
-                </label>
-            </div>
+                    <label>
+                        End Date: <input type="date" name="end_date">
+                    </label>
+
+                    <button type="submit">Apply Filters</button>
+                </div>
+            </form>
         </div>
 
 
+
         <div class="main">
-            <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Search...">
-                <button class="search-button">Search</button>
-            </div>
             <div class="box-list">
                 <div class="box-list-head">
                     <h1>Events:</h1>
@@ -91,10 +91,10 @@
                                     <option value="">Select Event Type</option>
                                     <option value="Gathering">Gathering</option>
                                     <option value="Party">Party</option>
-                                    <option value="Study Session">study session</option>
-                                    <option value="Field Trip">Field Trip</option>
-                                    <option value="Sports Event">Sports Event</option>
-                                    <option value="">Miscellaneous</option>
+                                    <option value="Study-Session">Study Session</option>
+                                    <option value="Field-Trip">Field Trip</option>
+                                    <option value="Sports-Event">Sports Event</option>
+                                    <option value="Other">Other</option>
 
                                 </select>
                             </div>
@@ -109,7 +109,7 @@
 
                             <div class="form-group">
                                 <label for="eventCost">Cost:</label>
-                                <input type="text" id="eventCost" name="eventCost" required>
+                                <input type="text" id="eventCost" name="eventCost">
                             </div>
 
                             <div class="form-group">
@@ -123,7 +123,6 @@
 
                 {% for event in events:%}
 
-                <!-- Box 1 -->
                 <div class="box">
                     <img src="{{event.ImageURL}}" alt="Sample Image">
                     <div class="box-content">
@@ -135,11 +134,22 @@
                         <ul>
                             <li>{{event.Date}}</li>
                             <li>{{event.Location}}</li>
-                            <li>{{event.Cost}}</li>
+                            <li>${{event.Cost}}</li>
+                            <li>{{ event.attendees|length }} attending</li>
                         </ul>
-                        <button class="accept-button">Accept</button>
+
+                        {% if user and user.get('localId') in event.attendees %}
+                        <!-- If the user has already RSVP'd, show a cancel button -->
+                        <button class="accept-button"
+                            onclick="window.location='/cancel_rsvp?eventId={{event.id}}'">Cancel</button>
+                        {% else %}
+                        <!-- If the user hasn't RSVP'd, show the RSVP button -->
+                        <button class="accept-button" onclick="window.location='/rsvp?eventId={{event.id}}'">RSVP
+                            Yes</button>
+                        {% endif %}
                     </div>
                 </div>
+
 
                 {%endfor%}
             </div>

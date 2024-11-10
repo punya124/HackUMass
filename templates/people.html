@@ -22,7 +22,7 @@
             {%if user == None:%}
             <button onclick="window.location = '/login'" id="signup-button">Login</button>
             {%else%}
-            <button onclick="window.location = '/logout'" id="accnt-button">
+            <button onclick="window.location = '/account'" id="accnt-button">
                 <img src="{{user_icon}}"></button>
             {%endif%}
         </div>
@@ -31,31 +31,36 @@
 
 
     <div class="container">
-        <!-- Filter Section -->
+
         <div class="filter-section">
-            <div class="filter-header">Filter</div>
-            <div class="filter-options">
-                <label>
-                    <input type="checkbox"> Option 1
-                </label>
-                <label>
-                    <input type="checkbox"> Option 2
-                </label>
-                <label>
-                    <input type="checkbox"> Option 3
-                </label>
-                <label>
-                    <input type="checkbox"> Option 4
-                </label>
-            </div>
+            <form method="GET"> <!-- Replace /your-endpoint with the actual URL -->
+                <div class="filter-header">Filter</div>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="event_type" value="Party"> Party
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Errands"> Errands
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Ride"> Ride
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Play"> Play
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Study"> Study
+                    </label>
+                    <label>
+                        <input type="checkbox" name="event_type" value="Travel"> Travel
+                    </label>
+                    <button type="submit">Apply Filters</button>
+                </div>
+            </form>
         </div>
 
 
         <div class="main">
-            <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Search...">
-                <button class="search-button">Search</button>
-            </div>
             <div class="box-list">
 
                 <div class="box-list-head">
@@ -74,54 +79,36 @@
                         <div class="modal-header">Post New Request</div>
                         <form id="eventForm" method="post">
                             <div class="form-group">
-                                <label for="requestName">Request Name:</label>
+                                <label for="requestName">Title:</label>
                                 <input type="text" id="eventName" name="eventName" required>
                             </div>
                             <div class="form-group">
-                                <label for="personName">Name:</label>
-                                <input type="text" id="personName" name="personName" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="eventType">Request Type:</label>
+                                <label for="eventType">I want company to:</label>
                                 <select id="eventType" name="eventType" required>
-                                    <option value="">Select Event Type</option>
-                                    <option value="shopping">Shopping</option>
-                                    <option value="ride">Ride</option>
-                                    <option value="notes">Notes</option>
-                                    <option value="option1">option1</option>
-                                    <option value="option2">option2</option>
+                                    <option value="">Choose:</option>
+                                    <option value="Study">Study</option>
+                                    <option value="Ride">Ride</option>
+                                    <option value="Errands">Errands</option>
+                                    <option value="Party">Party</option>
+                                    <option value="Play">Play</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="eventImage">Your profile:</label>
-                                <input type="file" id="eventImage" name="eventImage" accept="image/*">
-                            </div>
 
                             <div class="form-group">
-                                <label for="eventDate">Event Date:</label>
+                                <label for="eventDate">When?</label>
                                 <input type="date" id="eventDate" name="eventDate" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="requestTime">Request Time:</label>
+                                <label for="requestTime">What Time?</label>
                                 <input type="time" id="eventTime" name="eventTime" required>
                             </div>
-
 
                             <div class="form-group">
                                 <label for="location">Location:</label>
                                 <input type="text" id="location" name="location" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="cost">Cost:</label>
-                                <input type="text" id="cost" value="$" name="cost" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="requestPay">Pay:</label>
-                                <input type="text" id="requestPay" value="$" name="requestPay" required>
                             </div>
 
                             <div class="form-group">
@@ -137,7 +124,7 @@
                 <!-- Box 1 -->
                 <div class="box">
                     <div class="box-image-section">
-                        <img src="https://via.placeholder.com/100" alt="Sample Image" class="circle">
+                        <img src="{{request.ImageURL}}" alt="Sample Image" class="circle">
                         <div class="name-tag">{{request.PersonName}}</div>
                     </div>
 
@@ -149,9 +136,8 @@
                         <ul>
                             <li>{{request.DateTime}}</li>
                             <li>{{request.Location}}</li>
-                            <li>{{request.Cost}}</li>
                         </ul>
-                        <button class="accept-button">Accept</button>
+                        <button class="accept-button">Join</button>
                     </div>
                 </div>
                 {% endfor %}

@@ -1,149 +1,175 @@
  /* Account Page Styles */
+ .account-container {
+     background-color: #ffffff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     margin-top: 20px;
+     width: 50%;
+     position: relative;
+     justify-content: center;
+     transform: translateX(50%);
+ }
 
-.account-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    width: 50%;
-    position: relative;
-    justify-content: center;
-    transform: translateX(50%);
-}
-.profile-section {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #ccc;
-    display: inline-block;
-}
-.profile-name {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 10px;
-}
-.section-header {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-.details, .box-section {
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-.detail-item, .preference-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
-}
-.detail-item:last-child, .preference-item:last-child {
-    border-bottom: none;
-}
-.detail-label, .preference-label {
-    font-size: 1em;
-}
+ .profile-section {
+     text-align: center;
+     margin-bottom: 20px;
+ }
 
-/* Grouping buttons (edit and remove) next to each other */
-.button-group {
-    display: flex;
-    gap: 10px;  /* Adds space between the buttons */
-}
+ .profile-picture {
+     width: 100px;
+     height: 100px;
+     border-radius: 50%;
+     background-color: #ccc;
+     display: inline-block;
+     overflow: hidden;
+ }
 
-.edit-button, .add-preference-button {
-    padding: 5px 10px;
-    font-size: 0.9em;
-    color: #007bff;
-    background-color: #e7f0fe;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    
-}
-/* Specific style for remove button */
-.remove-button {
-    color: #007bff;
-    background-color: #e7f0fe;
-    border: none;
-    border-radius: 4px;
-}
+ .profile-picture img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     /* Makes sure the image covers the area without distorting */
+     border-radius: 50%;
+     /* Ensures the image is also circular */
+ }
 
-.remove-button:hover {
-    background-color: #f5c6cb;
-}
-.edit-button:hover, .add-preference-button:hover {
-    background-color: #d0e7fd;
-}
-.add-preference-button {
-    margin-top: 10px;
-}
+ .profile-name {
+     font-size: 1.2em;
+     font-weight: bold;
+     margin-top: 10px;
+ }
 
+ .section-header {
+     font-size: 1.1em;
+     font-weight: bold;
+     margin-top: 20px;
+     margin-bottom: 10px;
+ }
 
+ .details,
+ .box-section {
+     padding: 10px;
+     background-color: #f9f9f9;
+     border-radius: 8px;
+     margin-bottom: 20px;
+ }
 
-/* Requests List */
+ .detail-item,
+ .preference-item {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 8px 0;
+     border-bottom: 1px solid #ddd;
+ }
 
-/* Style for the grid container */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-    gap: 20px;
-    padding: 10px;
-    width: 95%;  
-}
+ .detail-item:last-child,
+ .preference-item:last-child {
+     border-bottom: none;
+ }
 
-/* rqstcard container styles */
-.rqstcard {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    z-index: 2;
-    margin-top: 5%;
-}
+ .detail-label,
+ .preference-label {
+     font-size: 1em;
+ }
 
-/* rqstcard content */
-.rqstcard-content {
-    display: flex;
-    padding: 15px;
-}
+ /* Grouping buttons (edit and remove) next to each other */
+ .button-group {
+     display: flex;
+     gap: 10px;
+     /* Adds space between the buttons */
+ }
 
-/* Text content styles */
-.text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+ .edit-button,
+ .add-preference-button {
+     padding: 5px 10px;
+     font-size: 0.9em;
+     color: #007bff;
+     background-color: #e7f0fe;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     transition: background-color 0.2s ease;
 
-.role {
-    font-weight: 800;
-    font-size: 16px;
-    margin: 0;
-    color: rgb(125, 38, 34);
-}
+ }
 
-.description {
-    font-size: 14px;
-    color: #555;
-    margin: 5px 0;
-}
+ /* Specific style for remove button */
+ .remove-button {
+     color: #007bff;
+     background-color: #e7f0fe;
+     border: none;
+     border-radius: 4px;
+ }
 
-.details {
-    margin-top: 0%;
-    margin-bottom: 5px;
-    font-size: 12px;
-    color: #777;
-}
+ .remove-button:hover {
+     background-color: #f5c6cb;
+ }
+
+ .edit-button:hover,
+ .add-preference-button:hover {
+     background-color: #d0e7fd;
+ }
+
+ .add-preference-button {
+     margin-top: 10px;
+ }
 
 
+
+ /* Requests List */
+
+ /* Style for the grid container */
+ .grid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     /* 2 cards per row */
+     gap: 20px;
+     padding: 10px;
+     width: 95%;
+ }
+
+ /* rqstcard container styles */
+ .rqstcard {
+     background-color: #fff;
+     border-radius: 10px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     z-index: 2;
+     margin-top: 5%;
+ }
+
+ /* rqstcard content */
+ .rqstcard-content {
+     display: flex;
+     padding: 15px;
+ }
+
+ /* Text content styles */
+ .text {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+ }
+
+ .role {
+     font-weight: 800;
+     font-size: 16px;
+     margin: 0;
+     color: rgb(125, 38, 34);
+ }
+
+ .description {
+     font-size: 14px;
+     color: #555;
+     margin: 5px 0;
+ }
+
+ .details {
+     margin-top: 0%;
+     margin-bottom: 5px;
+     font-size: 12px;
+     color: #777;
+ }

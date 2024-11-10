@@ -21,7 +21,7 @@
             {%if user == None:%}
             <button onclick="window.location = '/login'" id="signup-button">Login</button>
             {%else%}
-            <button onclick="window.location = '/logout'" id="accnt-button">
+            <button onclick="window.location = '/account'" id="accnt-button">
                 <img src="{{user_icon}}"></button>
             {%endif%}
         </div>
@@ -30,12 +30,9 @@
         <div class="header-content">
             <div class="text-content">
                 <h1>UMass <span class="highlight">Social</span></h1>
-                <p>A place where you can feel at home on campus. Find people to study with, parties on campus, or any other event
+                <p>A place where you can feel at home on campus. Find people to study with, parties on campus, or any
+                    other event
                     you're interested in. </p>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                    <button>Search</button>
-                </div>
             </div>
             <div class="image-container">
                 <img src="https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg"
@@ -48,36 +45,13 @@
         <div class="slider-container">
             <button class="slider-btn left-btn" onclick="slideLeft()">&#10094;</button>
             <div class="slider">
+                {%for event in events%}
                 <!-- Card 1 -->
                 <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Event Image 1">
-                    <div class="card-title">Lorem Ipsum Event 1</div>
+                    <img src="{{event.ImageURL}}" alt="Event Image 1">
+                    <div class="card-title">{{event.Name}}</div>
                 </div>
-                <!-- Card 2 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Event Image 2">
-                    <div class="card-title">Lorem Ipsum Event 2</div>
-                </div>
-                <!-- Card 3 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Event Image 3">
-                    <div class="card-title">Lorem Ipsum Event 3</div>
-                </div>
-                <!-- Card 1 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Event Image 1">
-                    <div class="card-title">Lorem Ipsum Event 1</div>
-                </div>
-                <!-- Card 2 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Event Image 2">
-                    <div class="card-title">Lorem Ipsum Event 2</div>
-                </div>
-                <!-- Card 3 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Event Image 3">
-                    <div class="card-title">Lorem Ipsum Event 3</div>
-                </div>
+                {%endfor%}
             </div>
             <button class="slider-btn right-btn" onclick="slideRight()">&#10095;</button>
         </div>
@@ -85,75 +59,23 @@
     <section class="featured-rqsts">
         <h2>Featured <span class="highlight">Requests</span></h2>
         <div class="rqstcard-grid">
+            {%for request in requests%}
             <div class="rqstcard">
                 <div class="rqstcard-content">
                     <div class="profile">
-                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
-                        <p class="name">John Doe</p> <!-- Added name below the image -->
+                        <img src="{{request.ImageURL}}" alt="Profile Picture" class="profile-img">
+                        <p class="name">{{request.PersonName}}</p> <!-- Added name below the image -->
                     </div>
                     <div class="text">
-                        <p class="role">Study Partner</p>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                            odio
-                            vitae vestibulum.</p>
-                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                        <p class="details">Location: Library, Room 101</p>
+                        <p class="role">{{request.RequestName}}</p>
+                        <p class="description">{{request.Description}}</p>
+                        <p class="details">Date/Time: {{request.DateTime}}</p>
+                        <p class="details">Location: {{request.location}}</p>
                     </div>
                 </div>
                 <button class="accept-btn">Accept</button>
             </div>
-            <div class="rqstcard">
-                <div class="rqstcard-content">
-                    <div class="profile">
-                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
-                        <p class="name">John Doe</p> <!-- Added name below the image -->
-                    </div>
-                    <div class="text">
-                        <p class="role">Study Partner</p>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                            odio
-                            vitae vestibulum.</p>
-                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                        <p class="details">Location: Library, Room 101</p>
-                    </div>
-                </div>
-                <button class="accept-btn">Accept</button>
-            </div>
-            <div class="rqstcard">
-                <div class="rqstcard-content">
-                    <div class="profile">
-                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
-                        <p class="name">John Doe</p> <!-- Added name below the image -->
-                    </div>
-                    <div class="text">
-                        <p class="role">Study Partner</p>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                            odio
-                            vitae vestibulum.</p>
-                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                        <p class="details">Location: Library, Room 101</p>
-                    </div>
-                </div>
-                <button class="accept-btn">Accept</button>
-            </div>
-            <div class="rqstcard">
-                <div class="rqstcard-content">
-                    <div class="profile">
-                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
-                        <p class="name">John Doe</p> <!-- Added name below the image -->
-                    </div>
-                    <div class="text">
-                        <p class="role">Study Partner</p>
-                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
-                            odio
-                            vitae vestibulum.</p>
-                        <p class="details">Date/Time: 2024-11-09 10:00 AM</p>
-                        <p class="details">Location: Library, Room 101</p>
-                    </div>
-                </div>
-                <button class="accept-btn">Accept</button>
-            </div>
-            <!-- Repeat the above structure for other cards -->
+            {%endfor%}
         </div>
 
     </section>
